@@ -1,0 +1,17 @@
+example_users.usersform:
+  path: '/example-module/form'
+  defaults:
+    _form: '\Drupal\example_users\Form\Users'
+    _title: 'Users Form'
+  requirements:
+    _permission: 'access content'
+
+example_users.userslist:
+  path: '/example-module/data'
+  defaults:
+    _controller: '\Drupal\example_users\Controller\ListController::index'
+    _title: 'Users List'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'

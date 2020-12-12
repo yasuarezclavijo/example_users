@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_schema().
+ * Defines the database tables used by this module.
+ */
+function example_users_schema() {
+  $schema['example_users'] = [
+    'description' => 'Stores users for "example module".',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique person ID.',
+      ],
+      'name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the person.',
+      ],
+      'identification' => [
+        'type' => 'varchar',
+        'length' => 25,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Identification of person.',
+      ],
+      'birthdate' => [
+        'type' => 'int',
+        'not null' => FALSE,
+        'default' => 0,
+        'size' => 'big',
+        'description' => 'Date of birth.',
+      ],
+      'position' => [
+        'type' => 'varchar',
+        'length' => 25,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Position of person.',
+      ],
+      'state' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'State.',
+      ],
+
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * It's good to clean up after ourselves.
+ *
+ * @ingroup tablesort_example
+ */
+function example_users_uninstall() {
+  $db_connection = \Drupal::database();
+  $db_connection->schema()->dropTable('example_users');
+}

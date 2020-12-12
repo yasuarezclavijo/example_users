@@ -1,0 +1,5 @@
+name: Example Users
+description: 'Example users module'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9
